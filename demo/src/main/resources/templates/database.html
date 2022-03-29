@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lan="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <th>isms</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="i: ${datas}">
+            <div th:text="${i.lastName}" ></div>
+            <div th:text="${i.fristName}"></div>
+        </tr>
+    </tbody>
+</table>
+<a th:href="@{/ingliz}">sss</a>
+</body>
+</html>

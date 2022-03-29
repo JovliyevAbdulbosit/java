@@ -1,0 +1,50 @@
+<h4><a href="/ingliz">Uz-Eng</a></h4>
+<input
+        autocomplete="off"
+        type="search"
+        id="traceback_area"
+        placeholder="so'zni kiriting"
+/>
+<div id="box"></div>
+
+<script type="text/javascript">
+    function httpGet(theUrl) {
+        let xmlHttpReq = new XMLHttpRequest();
+        let h1 = document.getElementById('sa')
+
+        xmlHttpReq.open("GET", theUrl, false);
+        xmlHttpReq.send(null);
+        return xmlHttpReq.response;
+    }
+    const data = httpGet('http://localhost:8082/dic/all')
+    rdata=JSON.parse(data)
+
+
+
+
+
+
+    const input = document.getElementById('traceback_area')
+    let arry=[]
+    input.addEventListener('keyup', (e)=>{
+        box.innerHTML=''
+        arry=rdata.filter(info=> info['uz'].includes(e.target.value))
+        console.log(arry)
+        if(arry.length>0){
+            arry.map(info=>{
+                box.innerHTML+=`<b>${info['uz']}</b>   -   <b>${info['en']}</b><br>`
+            })
+
+        }
+        else{
+            box.innerHTML="<b> no result </b>"
+        }
+    })
+
+
+
+
+
+</script>
+</body>
+</html>
